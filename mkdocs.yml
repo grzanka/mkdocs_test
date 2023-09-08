@@ -4,17 +4,28 @@ repo_url: https://github.com/grzanka/mkdocs_test
 repo_name: grzanka/mkdocs_test
 copyright: Copyright &copy; 2023 Leszek Grzanka
 
-nav:
 
-- Home:
-  - Overview: index.md
-- Coverage report: coverage.md
+theme:
+  name: material
+  features:
+    - content.code.annotate
+    - navigation.tabs
+    - navigation.tabs.sticky
+    - navigation.top
 
 plugins:
+- search
+- gen-files:
+    scripts:
+    - docs/gen_ref_pages.py
+- literate-nav:
+    nav_file: SUMMARY.md
+- section-index
 - coverage:
     page_name: coverage  # default
     html_report_dir: htmlcov  # default
 - mkdocstrings:
+    enable_inventory: true
     handlers:
       python:
         paths: [src]
@@ -22,7 +33,13 @@ plugins:
           show_if_no_docstring: true
           line_numbers: true
           inheritance_diagram: true
-          line_length: 79
+          separate_signature: true
+          show_root_heading: true
+          show_root_members_full_path: false
 
-theme:
-  name: material
+nav:
+- Home:
+  - Overview: index.md
+- Coverage report: coverage.md
+- Code Reference: reference/
+
