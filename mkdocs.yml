@@ -13,6 +13,13 @@ theme:
     - navigation.tabs.sticky
     - navigation.top
 
+nav:
+- Home:
+  - Overview: index.md
+- Coverage report: coverage.md
+- Swagger: swagger.md
+- Code Reference: reference/
+
 plugins:
 - search
 - gen-files:
@@ -22,8 +29,9 @@ plugins:
     nav_file: SUMMARY.md
 - section-index
 - coverage:
-    page_name: coverage  # default
-    html_report_dir: htmlcov  # default
+    page_name: coverage
+    html_report_dir: htmlcov
+- render_swagger
 - mkdocstrings:
     enable_inventory: true
     handlers:
@@ -37,9 +45,4 @@ plugins:
           show_root_heading: true
           show_root_members_full_path: false
 
-nav:
-- Home:
-  - Overview: index.md
-- Coverage report: coverage.md
-- Code Reference: reference/
 
